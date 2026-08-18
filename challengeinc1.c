@@ -3,33 +3,34 @@
 //SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t
 // when converting hex to base64
 //
-
+#include <stdio.h>
+#include <stdlib.h> 
 //basic principle: each hex digit is 4 bits long. each base64 character is 6 bits long. thus, if we take 3 hex digits (12 bits) at a time,
 // we can generate 2 base64 characters
 
 //break input into sets of 3 characters 
-char[] chunk(char hexStr[]){
+char* chunk(char *hexStr, int hexStrLen){
 
-  //need to refine this wth malloc- make array that can hold all the 3-by chunks derived from the given hex string
-  char chunkedResult[sizeof(hexStr)] = "";
+  int newHexStrLen = (hexStrLen / 3) + hexStrLen; 
+  //dynamically allocate array based on size of hexstr length +  hexStrLen / 3
+   char *chunkedResult = (char *)malloc(sizeof(char) * newHexStrLen);
 
+  
+    for (int i = 0; i < newHexStrLen; i++){
 
-    for (int i = 0; i < sizeof(hexStr); i++){
-
-        //store the chunk:
-        char hexChunk[3] = "";
-        
-        //if i is a multiple of 3, we have 1 chunk:
-         
+                 
         if (i % 3 != 0){
-            //add character to the string        
+        //need to figure out how to assign a delineating chunking character after dynamically allocating the array
+        // solution for chunking-> after every third character, add a delin character like the null terminator to tell
+        // our program "ok, translate the next chunk into binary"
+        chunkedResult[i] = "";     
         }else{
             //add char to str        
         }   
     }
 
-    return()
-       
+    return(); 
+    
   }
 
 
@@ -37,3 +38,8 @@ char[] chunk(char hexStr[]){
   //
 
   //function to convert binary to base64
+
+int main(){
+
+  return 0; 
+}
