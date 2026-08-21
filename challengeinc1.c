@@ -15,10 +15,10 @@ char *chunk(char *hexStr, int hexStrLen) {
 
   int newHexStrLen = (hexStrLen / 3) + hexStrLen;
   // dynamically allocate array based on size of hexstr length +  hexStrLen / 3
-  char *chunkedResult = (char *)malloc(sizeof(char) * newHexStrLen);
+  char *chunkedResult = hexStr;
 
   for (int i = 0; i < newHexStrLen; i++) {
-    chunkedResult[i] = hexStr[i];
+
     if (i % 3 == 0) {
       chunkedResult[i + 1] = '!';
       // need to figure out how to assign a delineating chunking character after
@@ -26,7 +26,7 @@ char *chunk(char *hexStr, int hexStrLen) {
       //  solution for chunking-> after every third character, add a delin
       //  character like the null terminator to tell our program "ok, translate
       //  the next chunk into binary"
-    }
+    } //
   }
 
   return (chunkedResult);
