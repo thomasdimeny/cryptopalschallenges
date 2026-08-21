@@ -16,9 +16,13 @@ char *chunk(char *hexStr, int hexStrLen) {
   int newHexStrLen = (hexStrLen / 3) + hexStrLen;
   // dynamically allocate array based on size of hexstr length +  hexStrLen / 3
   char *chunkedResult = hexStr;
-
+  char temp[4];
   for (int i = 0; i < newHexStrLen; i++) {
-
+    // iterate thru indices via a counter, reset when we hit the 3rd index
+    //  if counter = 0- temp[0] = hexStr[i]
+    //  counter++
+    //  if counter = 1: temp[1] = hexStr[i]... etc
+    //  then append temp to chunkedResult at i
     if (i % 3 == 0) {
       // issue here is that it doesnt just add a '!', it replaces every 3rd hex
       // char
